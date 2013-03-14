@@ -4,12 +4,20 @@ module RailsAdminNestedSet
       tree = tree.to_a.sort_by { |m| m.lft }
       roots = tree.select{|elem| elem.parent_id.nil?}
       id = "ns_#{rand(100_000_000..999_999_999)}"
-      content_tag(:div, rails_admin_nested_set_builder(roots, tree), id: id, class: 'nested_set_ui')
+      content = content_tag(:div, rails_admin_nested_set_builder(roots, tree), id: id, class: 'nested_set_ui')
+      js = "
+        rails_admin_nested_set({
+          id: '#{id}',
+          max_depth: #{max_depth},
+          update_url: '#{nested_set_path(model_name: @abstract_model)}'
+        });
+      ".gsub(' ', '')
+      content + content_tag(:script, js, type: 'text/javascript')
     end
 
 
     def rails_admin_nested_set_builder(nodes, tree)
-      nodes.each do |node|
+      nodes.map do |node|
         li_classes = 'dd-item dd3-item'
 
         content_tag :li, class: li_classes, :'data-id' => node.id do
@@ -28,6 +36,10 @@ module RailsAdminNestedSet
           output
         end
       end.join.html_safe
+    end
+
+    def max_depth
+      @nested_set_conf.options[:max_depth] || '0'
     end
 
     def action_links(model)

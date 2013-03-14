@@ -1,5 +1,6 @@
 en:
   admin:
     actions:
-      nested_set_ui:
+      nested_set:
         menu: "Sorting"
+        breadcrumb: "Sorting"

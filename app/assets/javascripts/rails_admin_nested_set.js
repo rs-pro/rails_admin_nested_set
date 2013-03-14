@@ -3,7 +3,7 @@
 //= require jquery.ui.sortable
 //= require jquery.mjs.nestedSortable
 
-function nested_set_ui(tree_config) {
+function rails_admin_nested_set(tree_config) {
     $(function () {
         $('#' + tree_config['id']).nestedSortable({
             disableNesting: 'no-nest',
@@ -11,7 +11,7 @@ function nested_set_ui(tree_config) {
             handle: 'i.handle',
             helper: 'clone',
             items: 'li',
-            maxLevels: tree_config['max_levels'],
+            maxLevels: tree_config['max_depth'],
             opacity: .6,
             placeholder: 'placeholder',
             tabSize: 25,
@@ -21,7 +21,7 @@ function nested_set_ui(tree_config) {
                 $.ajax({
                     type: 'POST',
                     dataType: 'html',
-                    url: tree_config['rebuild_url'],
+                    url: tree_config['update_url'],
                     data: {
                         id:        ui.item.data('id'),
                         parent_id: ui.item.parent().parent().data('id'),

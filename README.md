@@ -37,7 +37,17 @@ Add the nested_set action for each model or only for models you need
           end
         end
       end
-end
+    end
+
+In model config:
+
+  rails_admin do
+    ...
+
+    nested_set({
+        max_depth: 1
+    })
+  end
 
 ## Contributing
 
