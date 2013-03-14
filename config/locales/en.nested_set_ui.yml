@@ -1,0 +1,5 @@
+en:
+  admin:
+    actions:
+      nested_set_ui:
+        menu: "Sorting"
