@@ -1,4 +1,4 @@
-# NestedSetUi
+# RailsAdminNestedSet
 
 TODO: Write a gem description
 
@@ -62,4 +62,11 @@ In model:
 Some ideas and code for this gem are taken from:
 
 https://github.com/dalpo/rails_admin_nestable (MIT license)
+
 https://github.com/the-teacher/the_sortable_tree (MIT license)
+
+## License
+
+(c) 2013 http://rocketscience.pro
+
+MIT license
