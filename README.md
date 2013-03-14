@@ -41,15 +41,13 @@ Add the nested_set action for each model or only for models you need
 
 In model:
 
-  acts_as_nested_set
-
-  rails_admin do
+    acts_as_nested_set
+    rails_admin do
     ...
-
     nested_set({
         max_depth: 1
     })
-  end
+    end
 
 ## Contributing
 
