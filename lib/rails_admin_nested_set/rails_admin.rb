@@ -1,7 +1,7 @@
 module RailsAdmin
   module Config
     module Actions
-      class NestedSetUi < Base
+      class NestedSet < Base
         RailsAdmin::Config::Actions.register(self)
 
         # Is the action acting on the root level (Example: /admin/contact)

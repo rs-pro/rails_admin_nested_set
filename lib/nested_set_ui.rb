@@ -1,12 +1,13 @@
-require "nested_set_ui/version"
-require 'nested_set_ui/engine'
+module RailsAdminNestedSet
 
-module NestedSetUi
 end
+
+require "rails_admin_nested_set/version"
+require 'rails_admin_nested_set/engine'
 
 require 'rails_admin/config/actions'
 require 'rails_admin/config/model'
 
-require 'nested_set_ui/rails_admin'
-require 'nested_set_ui/model'
-require 'nested_set_ui/helper'
+require 'rails_admin_nested_set/rails_admin'
+require 'rails_admin_nested_set/model'
+require 'rails_admin_nested_set/helper'

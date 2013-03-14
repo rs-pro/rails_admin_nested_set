@@ -6,7 +6,7 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'nested_set_ui'
+    gem 'rails_admin_nested_set'
 
 And then execute:
 
@@ -14,16 +14,30 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install nested_set_ui
+    $ gem install rails_admin_nested_set
 
 ## Usage with rails_admin
 
 Add to /app/assets/javascripts/rails_admin/custom/ui.coffee
 
-    #= require nested_set_ui
+    #= require rails_admin_nested_set
 
 Add to /app/assets/stylesheets/rails_admin/custom/theming.sass
-    //= require nested_set_ui
+
+    //= require rails_admin_nested_set
+
+Add the nested_set action for each model or only for models you need
+
+    RailsAdmin.config do |config|
+      config.actions do
+        ......
+        nested_set do
+          visible do
+            %w(Page).include? bindings[:abstract_model].model_name
+          end
+        end
+      end
+end
 
 ## Contributing
 

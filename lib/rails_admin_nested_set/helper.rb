@@ -1,4 +1,4 @@
-module NestedSetUi
+module RailsAdminNestedSet
   module Helper
     def nested_set_ui_class_of(tree)
       case
@@ -20,12 +20,12 @@ module NestedSetUi
       nodes.each do |node|
         li_classes = 'dd-item dd3-item'
 
-        content_tag :li, class: li_classes, :'data-id' => tree_node.id do
+        content_tag :li, class: li_classes, :'data-id' => node.id do
 
           output = content_tag :div, 'drag', class: 'dd-handle dd3-handle'
           output+= content_tag :div, class: 'dd3-content' do
-            content = link_to @model_config.with(object: tree_node).object_label, edit_path(@abstract_model, tree_node.id)
-            content + content_tag(:div, action_links(tree_node), class: 'pull-right links')
+            content = link_to @model_config.with(object: node).object_label, edit_path(@abstract_model, node.id)
+            content + content_tag(:div, action_links(node), class: 'pull-right links')
           end
 
           children = tree.select{|elem| elem.parent_id == node.id}
@@ -36,6 +36,12 @@ module NestedSetUi
           output
         end
       end.join.html_safe
+    end
+
+    def action_links(model)
+      content_tag :ul, class: 'inline actions' do
+        menu_for :member, @abstract_model, model, true
+      end
     end
   end
 end
