@@ -1,7 +1,7 @@
 module RailsAdmin
   module Config
     class Model
-      register_instance_option :rails_admin_nested_set do
+      register_instance_option :nested_set do
         nil
       end
     end
