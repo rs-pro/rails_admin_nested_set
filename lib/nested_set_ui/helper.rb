@@ -9,7 +9,7 @@ module NestedSetUi
     end
 
     def nested_set_ui(tree, opts= {})
-      tree = tree.to_a.sort_by { |m| m.send(opts[:sort_by]).nil? ? 0 : m.send(opts[:sort_by]) }
+      tree = tree.to_a.sort_by { |m| m.lft }
       roots = tree.select{|elem| elem.parent_id.nil?}
       id = "ns_#{rand(100_000_000..999_999_999)}"
       content_tag(:div, nested_set_ui_builder(roots, tree), id: id, class: 'nested_set_ui')
