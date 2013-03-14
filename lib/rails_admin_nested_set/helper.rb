@@ -1,22 +1,14 @@
 module RailsAdminNestedSet
   module Helper
-    def nested_set_ui_class_of(tree)
-      case
-        when defined?(ActiveRecord) && tree.is_a?(ActiveRecord::Relation) then tree.name.to_s.underscore.downcase
-        when tree.empty? then nil
-        else tree.first.class.to_s.underscore.downcase
-      end
-    end
-
-    def nested_set_ui(tree, opts= {})
+    def rails_admin_nested_set(tree, opts= {})
       tree = tree.to_a.sort_by { |m| m.lft }
       roots = tree.select{|elem| elem.parent_id.nil?}
       id = "ns_#{rand(100_000_000..999_999_999)}"
-      content_tag(:div, nested_set_ui_builder(roots, tree), id: id, class: 'nested_set_ui')
+      content_tag(:div, rails_admin_nested_set_builder(roots, tree), id: id, class: 'nested_set_ui')
     end
 
 
-    def nested_set_ui_builder(nodes, tree)
+    def rails_admin_nested_set_builder(nodes, tree)
       nodes.each do |node|
         li_classes = 'dd-item dd3-item'
 
@@ -30,7 +22,7 @@ module RailsAdminNestedSet
 
           children = tree.select{|elem| elem.parent_id == node.id}
           if children.any?
-            output += content_tag :ol, nested_set_ui_builder(children, tree), class: 'dd-list'
+            output += content_tag :ol, rails_admin_nested_set_builder(children, tree), class: 'dd-list'
           end
 
           output
