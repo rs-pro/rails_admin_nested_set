@@ -23,7 +23,6 @@ module RailsAdmin
             @nested_set_conf = ::RailsAdminNestedSet::Configuration.new @abstract_model
 
             if params['id'].present?
-              p params
               begin
                 id        = params[:id].to_s
                 parent_id = params[:parent_id].to_s
