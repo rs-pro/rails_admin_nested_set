@@ -19,10 +19,11 @@ module RailsAdmin
         end
 
         register_instance_option :controller do
-          @nested_set_conf = ::RailsAdminNestable::Configuration.new @abstract_model
-
           Proc.new do |klass|
+            @nested_set_conf = ::RailsAdminNestedSet::Configuration.new @abstract_model
+
             if params['id'].present?
+              p params
               begin
                 id        = params[:id].to_s
                 parent_id = params[:parent_id].to_s
@@ -38,15 +39,19 @@ module RailsAdmin
 
                 obj = @abstract_model.model.find(id)
                 if prev_id.empty? && next_id.empty?
+                  p "move_to_child_of #{parent_id}"
                   obj.move_to_child_of @abstract_model.model.find(parent_id)
                 elsif !prev_id.empty?
+                  p "move_to_right_of #{prev_id}"
                   obj.move_to_right_of @abstract_model.model.find(prev_id)
                 elsif !next_id.empty?
+                  p "move_to_left_of #{next_id}"
                   obj.move_to_left_of @abstract_model.model.find(next_id)
                 end
 
                 message = "<strong>#{I18n.t('admin.actions.nestable.success')}!</strong>"
               rescue Exception => e
+                @abstract_model.model.rebuild!
                 message = "<strong>#{I18n.t('admin.actions.nestable.error')}</strong>: #{e}"
               end
 

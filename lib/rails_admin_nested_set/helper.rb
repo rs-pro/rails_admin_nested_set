@@ -4,15 +4,9 @@ module RailsAdminNestedSet
       tree = tree.to_a.sort_by { |m| m.lft }
       roots = tree.select{|elem| elem.parent_id.nil?}
       id = "ns_#{rand(100_000_000..999_999_999)}"
-      content = content_tag(:div, rails_admin_nested_set_builder(roots, tree), id: id, class: 'nested_set_ui')
-      js = "
-        rails_admin_nested_set({
-          id: '#{id}',
-          max_depth: #{max_depth},
-          update_url: '#{nested_set_path(model_name: @abstract_model)}'
-        });
-      ".gsub(' ', '')
-      content + content_tag(:script, js, type: 'text/javascript')
+      content = content_tag(:ol, rails_admin_nested_set_builder(roots, tree), id: id, class: 'nested_set_ui')
+      js = "rails_admin_nested_set({id: '#{id}', max_depth: #{max_depth}, update_url: '#{nested_set_path(model_name: @abstract_model)}'});"
+      content + content_tag(:script, js.html_safe, type: 'text/javascript')
     end
 
 
