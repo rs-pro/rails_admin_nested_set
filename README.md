@@ -39,7 +39,9 @@ Add the nested_set action for each model or only for models you need
       end
     end
 
-In model config:
+In model:
+
+  acts_as_nested_set
 
   rails_admin do
     ...
