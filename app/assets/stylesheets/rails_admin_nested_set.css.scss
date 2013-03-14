@@ -13,7 +13,7 @@
   line-height: 20px;
 }
 
-.dd-list {
+.dd-list, .dd-list ol {
   display: block;
   position: relative;
   margin: 0;
@@ -21,11 +21,11 @@
   list-style: none;
 }
 
-.dd-list .dd-list {
+.dd-list ol {
   padding-left: 30px;
 }
 
-.dd-collapsed .dd-list {
+.dd-collapsed ol {
   display: none;
 }
 
