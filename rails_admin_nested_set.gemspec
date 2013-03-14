@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'rails_admin_nested_set/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "nested_set_ui"
+  gem.name          = "rails_admin_nested_set"
   gem.version       = RailsAdminNestedSet::VERSION
   gem.authors       = ["Gleb Tv"]
   gem.email         = ["glebtv@gmail.com"]
