@@ -24,7 +24,7 @@ Add to /app/assets/javascripts/rails_admin/custom/ui.coffee
 
 Add to /app/assets/stylesheets/rails_admin/custom/theming.sass
 
-    //= require rails_admin_nested_set
+    @import rails_admin_nested_set.css.scss
 
 Add the nested_set action for each model or only for models you need
 
