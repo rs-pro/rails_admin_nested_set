@@ -5,7 +5,7 @@ require 'rails_admin_nested_set/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "nested_set_ui"
-  gem.version       = NestedSetUi::VERSION
+  gem.version       = RailsAdminNestedSet::VERSION
   gem.authors       = ["Gleb Tv"]
   gem.email         = ["glebtv@gmail.com"]
   gem.description   = %q{Rails admin nested set}
