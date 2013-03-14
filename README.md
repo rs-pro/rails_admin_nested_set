@@ -1,6 +1,6 @@
 # RailsAdminNestedSet
 
-TODO: Write a gem description
+It looks and feels exactly like https://github.com/dalpo/rails_admin_nestable but uses jquery Nested Sortable and awesome_nested_set instead of Nestable and Ancestry.
 
 ## Installation
 
