@@ -4,3 +4,5 @@ ru:
       nested_set:
         menu: "Сортировка"
         breadcrumb: "Сортировка"
+        error: "Ошибка"
+        success: "Успешно"

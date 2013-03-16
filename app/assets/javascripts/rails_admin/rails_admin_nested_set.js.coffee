@@ -1,7 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.ui.sortable
-#= require jquery.mjs.nestedSortable
+#= require rails_admin/jquery.mjs.nestedSortable
 
 window.rails_admin_nested_set = (tree_config) ->
   show_flash = (data)->

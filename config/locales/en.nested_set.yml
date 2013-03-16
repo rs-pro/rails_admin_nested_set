@@ -4,3 +4,5 @@ en:
       nested_set:
         menu: "Sorting"
         breadcrumb: "Sorting"
+        error: "Error"
+        success: "Success"

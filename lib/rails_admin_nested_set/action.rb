@@ -48,15 +48,15 @@ module RailsAdmin
                   obj.move_to_left_of @abstract_model.model.find(next_id)
                 end
 
-                message = "<strong>#{I18n.t('admin.actions.nestable.success')}!</strong>"
+                message = "<strong>#{I18n.t('admin.actions.nested_set.success')}!</strong>"
               rescue Exception => e
                 @abstract_model.model.rebuild!
-                message = "<strong>#{I18n.t('admin.actions.nestable.error')}</strong>: #{e}"
+                message = "<strong>#{I18n.t('admin.actions.nested_set.error')}</strong>: #{e}"
               end
 
               render text: message
             else
-              @nodes = list_entries(@model_config, :index, nil, nil).order('lft')
+              @nodes = list_entries(@model_config, :index, nil, nil).sort { |a,b| a.lft <=> b.lft }
               render action: @action.template_name
             end
           end
