@@ -35,10 +35,10 @@ In model:
 
     acts_as_nested_set
     rails_admin do
-    ...
-    nested_set({
-        max_depth: 1
-    })
+        ...
+        nested_set({
+            max_depth: 1
+        })
     end
 
 ## Contributing
