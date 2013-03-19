@@ -1,6 +1,3 @@
-#= require jquery
-#= require jquery_ujs
-#= require jquery.ui.sortable
 #= require rails_admin/jquery.mjs.nestedSortable
 
 window.rails_admin_nested_set = (tree_config) ->
@@ -22,8 +19,6 @@ window.rails_admin_nested_set = (tree_config) ->
       opacity: .6
       placeholder: "dd-placeholder"
       tabSize: 25
-      # tolerance: 'pointer',
-      # toleranceElement: '.dd3-content',
       update: (event, ui) ->
         $.ajax
           type: "POST"
@@ -36,10 +31,7 @@ window.rails_admin_nested_set = (tree_config) ->
             next_id: ui.item.next().data("id")
 
           error: (xhr, status, error) ->
-            # alert error
-            # window.location.reload()
             show_flash('Nested Set: fatal error')
 
           success: (data) ->
-            console.log(data)
             show_flash(data)
