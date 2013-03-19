@@ -18,14 +18,6 @@ Or install it yourself as:
 
 ## Usage with rails_admin
 
-Add to /app/assets/javascripts/rails_admin/custom/ui.coffee
-
-    #= require rails_admin_nested_set
-
-Add to /app/assets/stylesheets/rails_admin/custom/theming.sass
-
-    @import rails_admin_nested_set.css.scss
-
 Add the nested_set action for each model or only for models you need
 
     RailsAdmin.config do |config|
