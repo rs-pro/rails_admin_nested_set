@@ -1,6 +1,8 @@
 # RailsAdminNestedSet
 
-It looks and feels exactly like https://github.com/dalpo/rails_admin_nestable but uses jquery Nested Sortable and awesome_nested_set instead of Nestable and Ancestry.
+It looks and feels exactly like https://github.com/dalpo/rails_admin_nestable but uses jquery Nested Sortable and awesome_nested_set or mongoid_nested_set instead of Nestable and Ancestry.
+
+mongoid_nested_set users: use GIT version for new Mongoid!
 
 ## Installation
 
