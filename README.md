@@ -2,6 +2,9 @@
 
 It looks and feels exactly like https://github.com/dalpo/rails_admin_nestable but uses jquery Nested Sortable and awesome_nested_set or mongoid_nested_set instead of Nestable and Ancestry.
 
+Designed and tested with https://github.com/55ideas/mongoid_nested_set but
+should also work with awesome_nested_set (untested)
+
 mongoid_nested_set users: use GIT version for new Mongoid!
 
 ## Installation
