@@ -6,15 +6,13 @@ module RailsAdminNestedSet
 
     def options
       @options ||= {
-          max_depth: 1,
+          max_depth: 3,
       }.merge(config)
-
-      @options || {}
     end
 
     protected
     def config
-      ::RailsAdmin::Config.model(@abstract_model.model).nested_set
+      ::RailsAdmin::Config.model(@abstract_model.model).nested_set || {}
     end
   end
 end
