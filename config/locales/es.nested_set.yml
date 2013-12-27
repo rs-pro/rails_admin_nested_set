@@ -1,0 +1,9 @@
+es:
+  admin:
+    actions:
+      nested_set:
+        menu: "Ordenar"
+        breadcrumb: "Ordenar"
+        error: "Error"
+        success: "Éxito"
+        title: "Ordenar"
