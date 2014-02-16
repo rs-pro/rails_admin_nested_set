@@ -10,42 +10,42 @@ mongoid_nested_set users: use GIT version for new Mongoid!
 ## Installation
 
 Add this line to your application's Gemfile:
-
-    gem 'rails_admin_nested_set'
-
+```ruby
+gem 'rails_admin_nested_set'
+```
 And then execute:
-
-    $ bundle
-
+```bash
+$ bundle
+```
 Or install it yourself as:
-
-    $ gem install rails_admin_nested_set
-
+```bash
+$ gem install rails_admin_nested_set
+```
 ## Usage with rails_admin
 
 Add the nested_set action for each model or only for models you need
-
-    RailsAdmin.config do |config|
-      config.actions do
-        ......
-        nested_set do
-          visible do
-            %w(Page).include? bindings[:abstract_model].model_name
-          end
-        end
+```ruby
+RailsAdmin.config do |config|
+  config.actions do
+    ......
+    nested_set do
+      visible do
+        %w(Page).include? bindings[:abstract_model].model_name
       end
     end
-
+  end
+end
+```
 In model:
-
-    acts_as_nested_set
-    rails_admin do
-        ...
-        nested_set({
-            max_depth: 1
-        })
-    end
-
+```ruby
+acts_as_nested_set
+rails_admin do
+    ...
+    nested_set({
+        max_depth: 1
+    })
+end
+```
 ## Contributing
 
 1. Fork it
