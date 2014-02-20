@@ -7,7 +7,7 @@ module RailsAdminNestedSet
     def options
       @options ||= {
           max_depth: 3,
-      }.merge(config)
+      }.merge(config || {})
     end
 
     protected

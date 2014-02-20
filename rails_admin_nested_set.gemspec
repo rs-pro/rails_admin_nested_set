@@ -12,10 +12,6 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Interface for editing a nested set for rails_admin}
   gem.homepage      = "https://github.com/rs-pro/rails_admin_nested_set"
 
-  gem.add_dependency "rails", "~> 4.0.0"
-  gem.add_dependency "jquery-rails"
-  gem.add_dependency "jquery-ui-rails"
-
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
