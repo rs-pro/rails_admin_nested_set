@@ -35,10 +35,26 @@
   line-height: 20px;
 }
 
+.dd-item .badge {
+  margin-right: 10px;
+}
+
+.dd-item img {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.dd-item > div {
+  position: relative
+}
+
 .dd-handle {
   display: block;
-  height: 30px;
-  margin: 5px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 30px;
   padding: 5px 10px;
   color: #333;
   text-decoration: none;
@@ -74,7 +90,7 @@
 
 .dd3-content {
   display: block;
-  height: 30px;
+  min-height: 30px;
   padding: 5px 10px 5px 40px;
   color: #333;
   text-decoration: none;
