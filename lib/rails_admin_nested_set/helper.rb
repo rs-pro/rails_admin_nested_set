@@ -15,7 +15,6 @@ module RailsAdminNestedSet
         li_classes = 'dd-item dd3-item'
 
         content_tag :li, class: li_classes, :'data-id' => node.id do
-
           output = content_tag :div, 'drag', class: 'dd-handle dd3-handle'
           output+= content_tag :div, class: 'dd3-content' do
             content = link_to @model_config.with(object: node).object_label, edit_path(@abstract_model, node.id)
@@ -24,7 +23,7 @@ module RailsAdminNestedSet
 
           children = tree.select{|elem| elem.parent_id == node.id}
           if children.any?
-            output += content_tag :ol, rails_admin_nested_set_builder(children, tree), class: 'dd-list'
+            output = content_tag(:div, output) + content_tag(:ol, rails_admin_nested_set_builder(children, tree), class: 'dd-list')
           end
 
           output

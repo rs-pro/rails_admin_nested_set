@@ -11,14 +11,13 @@ window.rails_admin_nested_set = (tree_config) ->
 
   $ ->
     $("#" + tree_config["id"]).nestedSortable
-      forcePlaceholderSize: true
-      # handle: 'i.dd-handle',
-      helper: "clone"
-      items: "li"
+      handle: '.dd-handle',
+      #helper: "clone"
+      items: ".dd-item"
       maxLevels: tree_config["max_depth"]
-      opacity: .6
       placeholder: "dd-placeholder"
-      tabSize: 25
+      tolerance: 'pointer',
+      toleranceElement: '> div',
       update: (event, ui) ->
         $.ajax
           type: "POST"
