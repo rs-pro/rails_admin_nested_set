@@ -12,7 +12,6 @@ window.rails_admin_nested_set = (tree_config) ->
   $ ->
     $("#" + tree_config["id"]).nestedSortable
       handle: '.dd-handle',
-      #helper: "clone"
       items: ".dd-item"
       maxLevels: tree_config["max_depth"]
       placeholder: "dd-placeholder"

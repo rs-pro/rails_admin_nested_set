@@ -53,7 +53,7 @@ module RailsAdminNestedSet
           children = tree.select{|elem| elem.parent_id == node.id}
           output = content_tag(:div, output)
           if children.any?
-             output += content_tag(:ol, rails_admin_nested_set_builder(children, tree), class: 'dd-list')
+            output += content_tag(:ol, rails_admin_nested_set_builder(children, tree), class: 'dd-list')
           end
 
           output
