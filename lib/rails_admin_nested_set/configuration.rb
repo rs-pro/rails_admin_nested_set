@@ -7,6 +7,10 @@ module RailsAdminNestedSet
     def options
       @options ||= {
           max_depth: 3,
+          toggle_fields: [:enabled],
+          thumbnail_fields: [:image, :cover],
+          thumbnail_size: :thumb,
+          thumbnail_gem: :paperclip,
       }.merge(config || {})
     end
 

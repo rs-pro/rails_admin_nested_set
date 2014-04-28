@@ -46,7 +46,11 @@ In model:
     rails_admin do
         ...
         nested_set({
-            max_depth: 1
+            max_depth: 1,
+            toggle_fields: [:enabled],
+            thumbnail_fields: [:image, :cover],
+            thumbnail_size: :thumb,
+            thumbnail_gem: :paperclip, # or :carrierwave
         })
     end
 
