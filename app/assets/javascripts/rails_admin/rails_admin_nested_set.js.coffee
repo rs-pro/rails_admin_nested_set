@@ -56,9 +56,7 @@ init = ->
           success: (data) ->
             show_flash(data)
 
-console.log 'bind'
 $(document).off('pjax:end.rails_admin_nested_set').on('pjax:end.rails_admin_nested_set', init)
 $(document).off('ready.rails_admin_nested_set').on('ready.rails_admin_nested_set', init)
-
-
 $(document).on('click', '.js-tree-toggle', js_tree_toggle)
+
