@@ -1,16 +1,38 @@
 #= require rails_admin/jquery.mjs.nestedSortable
 
-window.rails_admin_nested_set = (tree_config) ->
-  show_flash = (data)->
-    $flash = $('<div>')
-      .addClass('nestable-flash alert')
-      .append($('<button>').addClass('close').data('dismiss', 'alert').html('&times;'))
-      .append($('<span>').addClass('body').html(data))
-    $('#rails_admin_nestable').append($flash)
-    $flash.fadeIn(200).delay(2000).fadeOut 200, -> $(this).remove()
+show_flash = (data)->
+  $flash = $('<div>')
+    .addClass('nestable-flash alert')
+    .append($('<button>').addClass('close').data('dismiss', 'alert').html('&times;'))
+    .append($('<span>').addClass('body').html(data))
+  $('#rails_admin_nestable').append($flash)
+  $flash.fadeIn(200).delay(2000).fadeOut 200, -> $(this).remove()
 
-  $ ->
-    $("#" + tree_config["id"]).nestedSortable
+js_tree_toggle = (e)->
+  e.preventDefault()
+  e.stopPropagation()
+  $t = $(this)
+  $t.html "<i class=\"fa fa-spinner fa-spin\"></i>"
+  $.ajax
+    type: "POST"
+    url: $t.attr("href")
+    data:
+      ajax: true
+    success: (r) ->
+      $t.attr "href", r.href
+      $t.attr "class", r.class + ' js-tree-toggle'
+      $t.text r.text
+      $t.parent().attr "title", r.text
+      return
+    error: (e) ->
+      alert e.responseText
+      return
+
+init = ->
+  $('.rails_admin_nested_set').each ->
+    $t = $(this)
+    tree_config = $t.data('config')
+    $t.nestedSortable
       handle: '.dd-handle',
       items: ".dd-item"
       maxLevels: tree_config["max_depth"]
@@ -33,3 +55,10 @@ window.rails_admin_nested_set = (tree_config) ->
 
           success: (data) ->
             show_flash(data)
+
+console.log 'bind'
+$(document).off('pjax:end.rails_admin_nested_set').on('pjax:end.rails_admin_nested_set', init)
+$(document).off('ready.rails_admin_nested_set').on('ready.rails_admin_nested_set', init)
+
+
+$(document).on('click', '.js-tree-toggle', js_tree_toggle)
