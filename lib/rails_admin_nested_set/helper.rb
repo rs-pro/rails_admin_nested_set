@@ -16,6 +16,10 @@ module RailsAdminNestedSet
       )
     end
 
+    def extra_fields(node)
+      "".html_safe
+    end
+
     def rails_admin_nested_set_builder(nodes, tree)
       nodes.map do |node|
         li_classes = 'dd-item dd3-item'
@@ -41,6 +45,8 @@ module RailsAdminNestedSet
             end
 
             content += link_to @model_config.with(object: node).object_label, edit_path(@abstract_model, node.id)
+            content += extra_fields(node)
+
             content += content_tag(:div, action_links(node), class: 'pull-right links')
             
             thumbnail_fields.each do |mth|
@@ -55,7 +61,6 @@ module RailsAdminNestedSet
                 content += image_tag(img, style: "max-height: 40px; max-width: 100px;", class: 'pull-right')
               end
             end
-            
             content
           end
 
