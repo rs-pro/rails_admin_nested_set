@@ -12,7 +12,7 @@ module RailsAdminNestedSet
       link_to(
         fv.html_safe,
         toggle_path(model_name: @abstract_model, id: node.id, method: meth, on: on.to_s),
-        class: 'js-tree-toggle badge ' + badge,
+        class: 'js-tree-toggle label ' + badge,
       )
     end
 
@@ -33,13 +33,13 @@ module RailsAdminNestedSet
               if node.respond_to?(tf) && respond_to?(:toggle_path)
                 content += case node.enabled
                   when nil
-                    g_link(node, '&#x2718;', 0, 'badge-important', tf) + g_link(node, '&#x2713;', 1, 'badge-success', tf)
+                    g_link(node, '&#x2718;', 0, 'label-danger', tf) + g_link(node, '&#x2713;', 1, 'label-success', tf)
                   when false
-                    g_link(node, '&#x2718;', 1, 'badge-important', tf)
+                    g_link(node, '&#x2718;', 1, 'label-danger', tf)
                   when true
-                    g_link(node, '&#x2713', 0, 'badge-success', tf)
+                    g_link(node, '&#x2713', 0, 'label-success', tf)
                   else
-                    %{<span class="badge">-</span>}
+                    %{<span class="label">-</span>}
                 end.html_safe
               end
             end

@@ -35,7 +35,7 @@
   line-height: 20px;
 }
 
-.dd-item .badge {
+.dd-item .label {
   margin-right: 10px;
 }
 
@@ -168,6 +168,10 @@
   padding: 0;
   list-style: none;
   display: block
+}
+
+.dd3-content ul.inline.actions li {
+  display: inline-block
 }
 
 .dd3-content ul.inline.actions li a {
