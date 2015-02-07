@@ -53,7 +53,20 @@ module RailsAdmin
 
               render text: message
             else
-              @nodes = list_entries(@model_config, :index, nil, nil).sort { |a,b| a.lft <=> b.lft }
+              @nodes ||= list_entries
+
+              unless @model_config.list.scopes.empty?
+                if params[:scope].blank?
+                  unless @model_config.list.scopes.first.nil?
+                    @nodes = @nodes.send(@model_config.list.scopes.first)
+                  end
+                elsif @model_config.list.scopes.collect(&:to_s).include?(params[:scope])
+                  @nodes = @nodes.send(params[:scope].to_sym)
+                end
+              end
+
+              @nodes = @nodes.sort { |a,b| a.lft <=> b.lft }
+
               render action: @action.template_name
             end
           end

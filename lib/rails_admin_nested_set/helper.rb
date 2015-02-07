@@ -48,7 +48,7 @@ module RailsAdminNestedSet
             content += extra_fields(node)
 
             content += content_tag(:div, action_links(node), class: 'pull-right links')
-            
+
             thumbnail_fields.each do |mth|
               if node.respond_to?(mth)
                 img = if paperclip?
@@ -92,6 +92,9 @@ module RailsAdminNestedSet
     end
     def thumbnail_size
       @nested_set_conf.options[:thumbnail_size]
+    end
+    def scopes
+      @nested_set_conf.options[:scopes] || '0'
     end
 
     def action_links(model)
