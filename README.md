@@ -54,6 +54,32 @@ In model:
         })
     end
 
+Add in your `config/initializers/rails_admin.rb` initializer the configuration:
+
+```ruby
+RailsAdmin.config do |config|
+  config.actions do
+    # root actions
+    dashboard                     # mandatory
+    # collection actions
+    index                         # mandatory
+    new
+    export
+    history_index
+    bulk_delete
+    # member actions
+    show
+    edit
+    delete
+    history_show
+    show_in_app
+
+    # Add the nested_set action for configured models
+    nested_set
+  end
+end
+```
+
 ## Contributing
 
 1. Fork it
