@@ -93,9 +93,6 @@ module RailsAdminNestedSet
     def thumbnail_size
       @nested_set_conf.options[:thumbnail_size]
     end
-    def scopes
-      @nested_set_conf.options[:scopes] || '0'
-    end
 
     def action_links(model)
       content_tag :ul, class: 'inline actions' do
