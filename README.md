@@ -27,32 +27,7 @@ Or install it yourself as:
 
 ## Usage with rails_admin
 
-Add the nested_set action for each model or only for models you need
-
-    RailsAdmin.config do |config|
-      config.actions do
-        ......
-        nested_set do
-          visible do
-            %w(Page).include? bindings[:abstract_model].model_name
-          end
-        end
-      end
-    end
-
 In model:
-
-    acts_as_nested_set
-    rails_admin do
-        ...
-        nested_set({
-            max_depth: 1,
-            toggle_fields: [:enabled],
-            thumbnail_fields: [:image, :cover],
-            thumbnail_size: :thumb,
-            thumbnail_gem: :paperclip, # or :carrierwave
-        })
-    end
 
 Add in your `config/initializers/rails_admin.rb` initializer the configuration:
 
@@ -79,6 +54,18 @@ RailsAdmin.config do |config|
   end
 end
 ```
+
+    acts_as_nested_set
+    rails_admin do
+        ...
+        nested_set({
+            max_depth: 1,
+            toggle_fields: [:enabled],
+            thumbnail_fields: [:image, :cover],
+            thumbnail_size: :thumb,
+            thumbnail_gem: :paperclip, # or :carrierwave
+        })
+    end
 
 ## Contributing
 

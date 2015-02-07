@@ -4,6 +4,11 @@ module RailsAdmin
       class NestedSet < Base
         RailsAdmin::Config::Actions.register(self)
 
+        register_instance_option :visible? do
+          current_model = ::RailsAdmin::Config.model(bindings[:abstract_model])
+          current_model.nested_set
+        end
+
         # Is the action acting on the root level (Example: /admin/contact)
         register_instance_option :root? do
           false
