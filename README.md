@@ -27,20 +27,33 @@ Or install it yourself as:
 
 ## Usage with rails_admin
 
-Add the nested_set action for each model or only for models you need
-
-    RailsAdmin.config do |config|
-      config.actions do
-        ......
-        nested_set do
-          visible do
-            %w(Page).include? bindings[:abstract_model].model_name
-          end
-        end
-      end
-    end
-
 In model:
+
+Add in your `config/initializers/rails_admin.rb` initializer the configuration:
+
+```ruby
+RailsAdmin.config do |config|
+  config.actions do
+    # root actions
+    dashboard                     # mandatory
+    # collection actions
+    index                         # mandatory
+    new
+    export
+    history_index
+    bulk_delete
+    # member actions
+    show
+    edit
+    delete
+    history_show
+    show_in_app
+
+    # Add the nested_set action for configured models
+    nested_set
+  end
+end
+```
 
     acts_as_nested_set
     rails_admin do

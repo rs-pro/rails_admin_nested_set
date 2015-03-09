@@ -4,6 +4,11 @@ module RailsAdmin
       class NestedSet < Base
         RailsAdmin::Config::Actions.register(self)
 
+        register_instance_option :visible? do
+          current_model = ::RailsAdmin::Config.model(bindings[:abstract_model])
+          current_model.nested_set
+        end
+
         # Is the action acting on the root level (Example: /admin/contact)
         register_instance_option :root? do
           false
@@ -53,7 +58,20 @@ module RailsAdmin
 
               render text: message
             else
-              @nodes = list_entries(@model_config, :index, nil, nil).sort { |a,b| a.lft <=> b.lft }
+              @nodes ||= list_entries
+
+              unless @model_config.list.scopes.empty?
+                if params[:scope].blank?
+                  unless @model_config.list.scopes.first.nil?
+                    @nodes = @nodes.send(@model_config.list.scopes.first)
+                  end
+                elsif @model_config.list.scopes.collect(&:to_s).include?(params[:scope])
+                  @nodes = @nodes.send(params[:scope].to_sym)
+                end
+              end
+
+              @nodes = @nodes.sort { |a,b| a.lft <=> b.lft }
+
               render action: @action.template_name
             end
           end

@@ -48,7 +48,7 @@ module RailsAdminNestedSet
             content += extra_fields(node)
 
             content += content_tag(:div, action_links(node), class: 'pull-right links')
-            
+
             thumbnail_fields.each do |mth|
               if node.respond_to?(mth)
                 img = if paperclip?
@@ -95,7 +95,7 @@ module RailsAdminNestedSet
     end
 
     def action_links(model)
-      content_tag :ul, class: 'inline actions' do
+      content_tag :ul, class: 'list-inline actions' do
         menu_for :member, @abstract_model, model, true
       end
     end

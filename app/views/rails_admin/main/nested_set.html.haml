@@ -1,6 +1,14 @@
 = stylesheet_link_tag 'rails_admin/rails_admin_nested_set'
 = javascript_include_tag 'rails_admin/rails_admin_nested_set'
 
-.row-fluid
-  .span12#rails_admin_nestable
+- unless @model_config.list.scopes.empty?
+  %br
+    %ul.nav.nav-tabs#scope_selector
+      - @model_config.list.scopes.each_with_index do |scope, index|
+        - scope = '_all' if scope.nil?
+        %li{class: "#{'active' if scope.to_s == params[:scope] || (params[:scope].blank? && index == 0)}"}
+          %a{href: nested_set_path(params.merge(scope: scope, page: nil)), class: 'pjax'}= I18n.t("admin.scopes.#{@abstract_model.to_param}.#{scope}", default: I18n.t("admin.scopes.#{scope}", default: scope.to_s.titleize))
+
+.row
+  .col-md-12#rails_admin_nestable
     = rails_admin_nested_set @nodes
