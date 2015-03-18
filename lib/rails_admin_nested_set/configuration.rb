@@ -11,6 +11,7 @@ module RailsAdminNestedSet
           thumbnail_fields: [:image, :cover],
           thumbnail_size: :thumb,
           thumbnail_gem: :paperclip,
+          scopes: []
       }.merge(config || {})
     end
 
@@ -20,3 +21,4 @@ module RailsAdminNestedSet
     end
   end
 end
+

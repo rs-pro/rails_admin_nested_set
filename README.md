@@ -51,6 +51,7 @@ In model:
             thumbnail_fields: [:image, :cover],
             thumbnail_size: :thumb,
             thumbnail_gem: :paperclip, # or :carrierwave
+            scopes: [:enabled, :disabled] # filter nodes by scope
         })
     end
 
