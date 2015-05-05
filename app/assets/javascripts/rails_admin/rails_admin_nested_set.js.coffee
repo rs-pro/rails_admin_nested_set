@@ -2,7 +2,7 @@
 
 show_flash = (data)->
   $flash = $('<div>')
-    .addClass('nestable-flash alert')
+    .addClass('nestable-flash alert alert-info')
     .append($('<button>').addClass('close').data('dismiss', 'alert').html('&times;'))
     .append($('<span>').addClass('body').html(data))
   $('#rails_admin_nestable').append($flash)

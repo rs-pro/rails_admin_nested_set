@@ -3,7 +3,7 @@
 
 .row-fluid
   .span12#rails_admin_nestable
-    - unless @model_config.nested_set[:scopes].blank?
+    - unless @model_config.nested_set.blank? || @model_config.nested_set[:scopes].blank?
       %ul.nav.nav-tabs#scope_selector
         - @model_config.nested_set[:scopes].each_with_index do |scope, index|
           - scope = '_all' if scope.nil?
