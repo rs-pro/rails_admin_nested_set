@@ -31,6 +31,8 @@ js_tree_toggle = (e)->
 init = ->
   $('.rails_admin_nested_set').each ->
     $t = $(this)
+    return if $t.hasClass('done')
+    $t.addClass('done')
     tree_config = $t.data('config')
     $t.nestedSortable
       handle: '.dd-handle',
@@ -58,5 +60,6 @@ init = ->
 
 $(document).off('pjax:end.rails_admin_nested_set').on('pjax:end.rails_admin_nested_set', init)
 $(document).off('ready.rails_admin_nested_set').on('ready.rails_admin_nested_set', init)
+
 $(document).on('click', '.js-tree-toggle', js_tree_toggle)
 

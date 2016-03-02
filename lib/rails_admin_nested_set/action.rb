@@ -18,6 +18,10 @@ module RailsAdmin
           false
         end
 
+        register_instance_option :pjax? do
+          false
+        end
+
         register_instance_option :controller do
           Proc.new do |klass|
             @nested_set_conf = ::RailsAdminNestedSet::Configuration.new @abstract_model
