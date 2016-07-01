@@ -50,12 +50,13 @@ module RailsAdmin
                 end
 
                 message = "<strong>#{I18n.t('admin.actions.nested_set.success')}!</strong>"
+                render text: message
               rescue Exception => e
                 @abstract_model.model.rebuild!
-                message = "<strong>#{I18n.t('admin.actions.nested_set.error')}</strong>: #{e}"
+                Rails.logger.error("#{e.class.name}: #{e.message}:\n#{e.backtrace.join("\n")}")
+                render text: "<strong>#{I18n.t('admin.actions.nested_set.error')}</strong>: #{e}", status: 500
               end
 
-              render text: message
             else
               @nodes = list_entries(@model_config, :index, nil, nil)
 
