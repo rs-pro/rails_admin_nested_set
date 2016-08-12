@@ -4,8 +4,15 @@ module RailsAdminNestedSet
       tree = tree.to_a.sort_by { |m| m.lft }
       roots = tree.select{|elem| elem.parent_id.nil?}
       id = "ns_#{rand(100_000_000..999_999_999)}"
-      tree_config = {max_depth: max_depth, update_url: nested_set_path(model_name: @abstract_model)}.to_json
-      content_tag(:ol, rails_admin_nested_set_builder(roots, tree), id: id, class: 'dd-list rails_admin_nested_set', 'data-config' => tree_config)
+      tree_config = {
+        max_depth: max_depth,
+        update_url: nested_set_path(model_name: @abstract_model)
+      }.to_json
+      content_tag(:ol, rails_admin_nested_set_builder(roots, tree), {
+        id: id,
+        class: 'dd-list rails_admin_nested_set',
+        'data-config' => tree_config
+      })
     end
 
     def g_link(node, fv, on, badge, meth)
@@ -33,7 +40,8 @@ module RailsAdminNestedSet
               if node.respond_to?(tf) && respond_to?(:toggle_path)
                 content += case node.enabled
                   when nil
-                    g_link(node, '&#x2718;', 0, 'label-danger', tf) + g_link(node, '&#x2713;', 1, 'label-success', tf)
+                    g_link(node, '&#x2718;', 0, 'label-danger', tf) +
+                    g_link(node, '&#x2713;', 1, 'label-success', tf)
                   when false
                     g_link(node, '&#x2718;', 1, 'label-danger', tf)
                   when true
