@@ -134,9 +134,7 @@
   overflow: hidden;
   border: 1px solid #aaa;
   background: #ddd;
-  background: -webkit-linear-gradient(top, #ddd 0%, #bbb 100%);
-  background: -moz-linear-gradient(top, #ddd 0%, #bbb 100%);
-  background: linear-gradient(top, #ddd 0%, #bbb 100%);
+  background: linear-gradient(to bottom, #ddd 0%, #bbb 100%);
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
