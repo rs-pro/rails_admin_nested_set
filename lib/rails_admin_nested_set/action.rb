@@ -34,9 +34,9 @@ module RailsAdmin
                 next_id   = params[:next_id].to_s
 
                 if id.empty?
-                  return render text: 'Nested set UI error: node id not defined', status: 500
+                  return render plain: 'Nested set UI error: node id not defined', status: 500
                 elsif parent_id.empty? && prev_id.empty? && next_id.empty?
-                  return render text: 'Nested set UI error: not defined where to move node', status: 500
+                  return render plain: 'Nested set UI error: not defined where to move node', status: 500
                 end
 
 
@@ -50,11 +50,11 @@ module RailsAdmin
                 end
 
                 message = "<strong>#{I18n.t('admin.actions.nested_set.success')}!</strong>"
-                render text: message
+                render plain: message
               rescue Exception => e
                 @abstract_model.model.rebuild!
                 Rails.logger.error("#{e.class.name}: #{e.message}:\n#{e.backtrace.join("\n")}")
-                render text: "<strong>#{I18n.t('admin.actions.nested_set.error')}</strong>: #{e}", status: 500
+                render plain: "<strong>#{I18n.t('admin.actions.nested_set.error')}</strong>: #{e}", status: 500
               end
 
             else
