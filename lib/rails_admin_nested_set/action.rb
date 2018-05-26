@@ -25,7 +25,6 @@ module RailsAdmin
         register_instance_option :controller do
           Proc.new do |klass|
             @nested_set_conf = ::RailsAdminNestedSet::Configuration.new @abstract_model
-
             if params['id'].present?
               begin
                 id        = params[:id].to_s
