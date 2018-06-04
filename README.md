@@ -1,5 +1,9 @@
 # RailsAdminNestedSet
 
+Master repository has moved to gitlab, all new code will be there:
+
+https://gitlab.com/rocket-science/rails_admin_nested_set
+
 It looks and feels exactly like [rails_admin_nestable](https://github.com/dalpo/rails_admin_nestable) but uses jquery Nested Sortable and
 [awesome_nested_set](https://github.com/collectiveidea/awesome_nested_set) or [glebtv-mongoid_nested_set](https://github.com/glebtv/mongoid_nested_set) instead of `Nestable` and `Ancestry`.
 
