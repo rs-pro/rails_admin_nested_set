@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["glebtv@gmail.com"]
   gem.description   = %q{Rails admin nested set}
   gem.summary       = %q{Interface for editing a nested set for rails_admin}
-  gem.homepage      = "https://github.com/rs-pro/rails_admin_nested_set"
+  gem.homepage      = "https://gitlab.com/rocket-science/rails_admin_nested_set"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
